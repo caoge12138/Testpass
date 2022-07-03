@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css">
+    <title>屑店会员系统</title>
+    <meta name="viewport" content="width=device-width">
+    
+</head>
+<style>
+html,body {
+	height: 100%;
+}
+</style>
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink" style="background-image:url(./background.png)">
+<div class="mdui-container">
+    <div class="mdui-row" style="padding-top: 5%;">
+        <div class="mdui-col-md-6 mdui-col-offset-md-3 mdui-col-sm-8 mdui-col-offset-sm-2">
+            <div class="mdui-card mdui-hoverable">
+                <div class="mdui-card-media mdui-center">
+                    <img src="tv.png" id="img1" style="display: none;max-width: 80%; margin: 0 auto">
+                </div> 
+                <div class="mdui-card-content">
+                <div class="mdui-textfield mdui-textfield-floating-label" id="textfield">
+                    <label class="mdui-textfield-label">Password</label>
+                    <input class="mdui-textfield-input" autocomplete="new-password" id="input" type="password"/>
+                    <div class="mdui-textfield-error" id="error">密码错误</div>
+                </div>
+                <button class="mdui-btn mdui-color-theme-accent mdui-center" id="valid">验证</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.w3cbus.com/library/mdui/1.0.2/js/mdui.min.js"></script>
+<script>
+    function hideImg(){
+				var img = document.getElementById("img1");
+				img.style.display = "none";
+			}
+			
+	function showImg(){
+				var img = document.getElementById("img1");
+				img.style.display = "block";
+			}
+    var $ = mdui.$;
+    var $textfield = $('#textfield');
+    var $input = $('#input');
+    var $error = $('#error');
+    var hasError = false;
+
+    $('#valid').on('click', function () {
+    var value = $input.val();
+
+    if (value=="123") {
+    hasError = false;
+    } else {
+    $error.text('密码错误');
+    hasError = true;
+    }
+
+    if (hasError) {
+    $textfield.addClass('mdui-textfield-invalid');
+    hideImg();
+    } else {
+    $textfield.removeClass('mdui-textfield-invalid');
+    showImg(); 
+}
+    });
+  </script>
+</body>
+</html>
